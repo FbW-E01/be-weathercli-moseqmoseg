@@ -15,7 +15,12 @@ axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&u
 
 axios.get(`http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${key}`)
     .then(function(response) {
-        console.log(`${response.data}`);
+        response.data.list.map(res => {
+            console.log(res.dt_txt);
+            res.weather.map(x => {
+                console.log(x.description)
+            })
+        })
     })
     .catch(function(error) {
         console.log(`${error} I've made a terrible mistake`);
